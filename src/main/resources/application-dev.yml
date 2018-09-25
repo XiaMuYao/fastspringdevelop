@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8383
   address: 0.0.0.0
 
 spring:
@@ -10,3 +10,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/stumysql?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: root
     password: XiaMuYao1314!
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true

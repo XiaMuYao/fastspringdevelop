@@ -39,7 +39,6 @@ public class FastJsonConfigByMe extends WebMvcConfigurationSupport {
                 SerializerFeature.WriteNullListAsEmpty,
                 // 将Boolean类型的NULL转化为false
                 SerializerFeature.WriteNullBooleanAsFalse,
-                SerializerFeature.WriteDateUseDateFormat,
                 // 避免循环引用
                 SerializerFeature.DisableCircularReferenceDetect);
         converter.setFastJsonConfig(config);
