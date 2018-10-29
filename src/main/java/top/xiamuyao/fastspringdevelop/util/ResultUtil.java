@@ -58,7 +58,7 @@ public class ResultUtil {
      * @param msg  数据
      * @return
      */
-    public static <T> RetResult<T> makeRsp(int code, String msg) {
+    public static <T> RetResult<T> makeRsp(ResultCode code, String msg) {
         return new RetResult<T>().setCode(code).setMsg(msg);
     }
 
@@ -70,7 +70,7 @@ public class ResultUtil {
      * @param data 数据
      * @return
      */
-    public static <T> RetResult<T> makeRsp(int code, String msg, T data) {
+    public static <T> RetResult<T> makeRsp(ResultCode code, String msg, T data) {
         return new RetResult<T>().setCode(code).setMsg(msg).setData(data);
     }
 

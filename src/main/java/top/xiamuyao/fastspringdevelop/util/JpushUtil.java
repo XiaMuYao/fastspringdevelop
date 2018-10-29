@@ -1,4 +1,4 @@
-package top.xiamuyao.fastspringdevelop;
+package top.xiamuyao.fastspringdevelop.util;
 
 
 import cn.jiguang.common.resp.APIConnectionException;

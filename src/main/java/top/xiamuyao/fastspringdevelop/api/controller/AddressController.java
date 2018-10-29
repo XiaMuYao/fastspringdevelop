@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import top.xiamuyao.fastspringdevelop.JpushUtil;
 import top.xiamuyao.fastspringdevelop.api.service.IAddressService;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 
@@ -28,7 +27,7 @@ public class AddressController {
     IAddressService mIAddressService;
 
     @GetMapping
-    public Object getData() {
+    public Object getData(int a ) {
 //        JpushUtil.jpushAndroid();
 //        return ResultUtil.makeOkDataRsp(mIAddressService.list(null));
 //        return ResultUtil.makeErrRsp("错误信息");
