@@ -92,6 +92,8 @@ public class UserController {
      *
      * @return
      */
+    // TODO: 2018/12/16 如果已经被激活 则不能再次激活
+    // TODO: 2018/12/16 定时任务 如果注册码已经过期 那就逻辑删除
     @PostMapping("/update")
     public RetResult update(@RequestParam("equipmentID") String equipmentID,
                             @RequestParam("registerCode") String registerCode) {
