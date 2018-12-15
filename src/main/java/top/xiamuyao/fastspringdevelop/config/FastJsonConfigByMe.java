@@ -20,7 +20,6 @@ import java.util.List;
  * 描    述：
  * 修订历史：
  * ================================================
- *
  */
 @Configuration
 public class FastJsonConfigByMe extends WebMvcConfigurationSupport {
@@ -49,6 +48,4 @@ public class FastJsonConfigByMe extends WebMvcConfigurationSupport {
         converter.setSupportedMediaTypes(mediaTypeList);
         converters.add(converter);
     }
-
-
 }

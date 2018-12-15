@@ -52,7 +52,7 @@ public class JpushUtil {
     }
 
     public static void main(String[] args) {
-        jpushAndroidWithRegistration(Arrays.asList("160a3797c82cf9b2772", "1a0018970a8ed267e3a", "170976fa8aa539fa299"));
+        jpushAndroidWithRegistration(Arrays.asList("160a3797c82cf9b2772"));
     }
 
 }

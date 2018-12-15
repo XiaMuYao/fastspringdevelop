@@ -1,0 +1,61 @@
+//package top.xiamuyao.fastspringdevelop.filter;
+//
+//import java.io.IOException;
+//import java.util.ArrayList;
+//
+//import javax.servlet.FilterChain;
+//import javax.servlet.ServletException;
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//
+//import io.jsonwebtoken.Jwts;
+//
+///**
+// * ================================================
+// * 作    者：夏沐尧  Github地址：https://github.com/XiaMuYaoDQX
+// * 版    本：1.0
+// * 创建日期： 2018/10/29
+// * 描    述：
+// * 修订历史：
+// * ================================================
+// */
+//public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
+//    public JwtAuthenticationFilter(AuthenticationManager authManager) {
+//        super(authManager);
+//    }
+//
+//    @Override
+//    protected void doFilterInternal(HttpServletRequest req,
+//                                    HttpServletResponse res,
+//                                    FilterChain chain) throws IOException, ServletException {
+//        String header = req.getHeader("Authorization");
+//
+//        if (header == null || !header.startsWith("Bearer ")) {
+//            chain.doFilter(req, res);
+//            return;
+//        }
+//
+//        UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+//
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        chain.doFilter(req, res);
+//    }
+//
+//    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+//        String token = request.getHeader("Authorization");
+//        if (token != null) {
+//            // parse the token.
+//            String user = Jwts.parser()
+//                    .setSigningKey("MyJwtSecret")
+//                    .parseClaimsJws(token.replace("Bearer ", ""))
+//                    .getBody()
+//                    .getSubject();
+//
+//            if (user != null) {
+//                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+//            }
+//            return null;
+//        }
+//        return null;
+//    }
+//}

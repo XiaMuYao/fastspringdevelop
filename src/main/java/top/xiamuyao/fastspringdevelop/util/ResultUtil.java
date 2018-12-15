@@ -48,7 +48,7 @@ public class ResultUtil {
      * @return
      */
     public static <T> RetResult<T> makeErrRsp(String message) {
-        return new RetResult<T>().setCode(ResultCode.FAIL).setMsg(SUCCESS);
+        return new RetResult<T>().setCode(ResultCode.FAIL).setMsg(message);
     }
 
     /**
