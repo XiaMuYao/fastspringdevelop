@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import lombok.NonNull;
 import top.xiamuyao.fastspringdevelop.api.entity.User;
 import top.xiamuyao.fastspringdevelop.api.mapper.UserMapper;
 import top.xiamuyao.fastspringdevelop.api.service.IUserService;
@@ -81,7 +82,7 @@ public class UserController {
      * @return
      */
     @GetMapping("/list")
-    public RetResult getList(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber, @RequestParam(value = "pagesize", defaultValue = "20") Integer pageSize) {
+    public RetResult getList(@NonNull @RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber, @RequestParam(value = "pagesize", defaultValue = "20") Integer pageSize) {
         Page<User> objectPage = new Page<>(pageNumber, pageSize);
         return ResultUtil.makeOkDataRsp(userService.page(objectPage, null));
     }
