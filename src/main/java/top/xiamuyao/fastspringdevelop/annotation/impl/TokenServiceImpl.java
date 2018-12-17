@@ -30,7 +30,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String generate(TokenType subject, Map<String, Object> payload, int hours) {
         return Jwts.builder().setClaims(payload).setSubject(subject.toString())
-                .setExpiration(new Date(System.currentTimeMillis() + (hours * 36000000)))
+                .setExpiration(new Date(System.currentTimeMillis() + (hours * 2)))
                 .signWith(SignatureAlgorithm.HS256, getSecret()).compact();
     }
 

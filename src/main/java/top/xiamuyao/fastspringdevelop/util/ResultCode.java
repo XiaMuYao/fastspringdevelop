@@ -26,6 +26,11 @@ public enum ResultCode {
      * 接口不存在
      */
     NOT_FOUND(404),
+
+    /**
+     * token失效
+     */
+    TOKEN_FALSE(233),
     /**
      * 服务器内部错误
      */

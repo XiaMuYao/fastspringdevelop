@@ -6,6 +6,7 @@ import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 import top.xiamuyao.fastspringdevelop.util.ResultCode;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 import top.xiamuyao.fastspringdevelop.util.RetResult;
@@ -15,24 +16,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * <p>
- * 通用 Api Controller 全局异常处理
- * </p>
+ * ================================================
+ * 作    者：夏沐尧  Github地址：https://github.com/XiaMuYaoDQX
+ * 版    本：1.0
+ * 创建日期： 2018/10/29
+ * 描    述：全局异常处理
+ * 修订历史：
+ * ================================================
  */
+// TODO: 2018/12/18 需要全局处理一下异常的问题  ServiceException 去判断这个的code 组合业务代码使用
+// TODO: 2018/12/18 而且对于多个异常的写法要更改一下 全局异常-分 业务异常(自定义异常)-总
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    /**
-     * <p>
-     * 自定义 REST 业务异常
-     * <p>
-     *
-     * @param e 异常类型
-     * @return
-     */
     @ExceptionHandler(value = Exception.class)
     public RetResult handleBadRequest(Exception e) {
         /*
@@ -50,6 +48,9 @@ public class GlobalExceptionHandler {
                 });
                 return ResultUtil.makeRsp(ResultCode.FAIL, "参数校验异常", jsonList);
             }
+        } else if (e instanceof ServiceException) {
+            return ResultUtil.makeRsp(ResultCode.TOKEN_FALSE,"token失效");
+
         }
 
         /**
