@@ -8,9 +8,11 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import top.xiamuyao.fastspringdevelop.annotation.Auth;
 import top.xiamuyao.fastspringdevelop.annotation.service.TokenService;
 import top.xiamuyao.fastspringdevelop.enums.TokenType;
 import top.xiamuyao.fastspringdevelop.exception.ServiceException;
+import top.xiamuyao.fastspringdevelop.util.ResultCode;
 
 /**
  * ================================================
@@ -33,13 +35,22 @@ public class AuthMethodArgumentResolver implements HandlerMethodArgumentResolver
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
-                                  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+                                  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) {
+
         String token = webRequest.getHeader("Access-Token");
-        if(token!=null) {
+
+        if (token != null) {
             return tokenService.parse(TokenType.ACCESS, token).getBody().get("accountId");
         } else {
-            throw new ServiceException("Sign required", 401);
+            throw new ServiceException("需要签名", ResultCode.TOKEN_FALSE);
         }
+
+        /**
+         * MultiPerson annotation = parameter.getParameterAnnotation(MultiPerson.class);
+         *         String firstName = webRequest.getParameter(annotation.value() + ".first_name");
+         *         String lastName = webRequest.getParameter(annotation.value() + ".last_name");
+         *         return new Person(firstName, lastName);
+         */
     }
 
 }

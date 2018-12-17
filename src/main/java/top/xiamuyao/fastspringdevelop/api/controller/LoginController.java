@@ -35,16 +35,15 @@ public class LoginController {
     /**
      * 获取token
      *
-     * @param username
+     * @param accountname
      * @param password
      * @return
      */
     @GetMapping("")
-    public RetResult getToken(@NonNull @RequestParam(value = "username") String username,
+    public RetResult getToken(@NonNull @RequestParam(value = "accountId") String accountname,
                               @NonNull @RequestParam(value = "password") String password) {
         Map<String, Object> payload = new HashMap<String, Object>();
-        payload.put("username", username);
-        payload.put("password", password);
+        payload.put("accountname", 1);
         return ResultUtil.makeOkDataRsp(tokenService.generate(TokenType.ACCESS, payload, 1));
     }
 

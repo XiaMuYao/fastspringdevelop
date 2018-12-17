@@ -1,6 +1,7 @@
 package top.xiamuyao.fastspringdevelop.exception;
 
 import lombok.Getter;
+import top.xiamuyao.fastspringdevelop.util.ResultCode;
 
 /**
  * 服务异常类
@@ -10,24 +11,17 @@ import lombok.Getter;
  */
 @Getter
 public class ServiceException extends RuntimeException {
-    private int code;
+    private ResultCode code;
     private String message;
-    private Integer errorCode;
 
-    public ServiceException(int errorCode, String message) {
-        this.code = 400;
+    public ServiceException( String message) {
+        this.code = ResultCode.INTERNAL_SERVER_ERROR;
         this.message = message;
-        this.errorCode = errorCode;
     }
 
-    public ServiceException(int errorCode, String message, int code) {
-        this.code = code;
-        this.message = message;
-        this.errorCode = errorCode;
-    }
-
-    public ServiceException(String message, int code) {
+    public ServiceException( String message, ResultCode code) {
         this.code = code;
         this.message = message;
     }
+
 }

@@ -26,7 +26,6 @@ public enum ResultCode {
      * 接口不存在
      */
     NOT_FOUND(404),
-
     /**
      * token失效
      */
@@ -34,7 +33,11 @@ public enum ResultCode {
     /**
      * 服务器内部错误
      */
-    INTERNAL_SERVER_ERROR(500);
+    INTERNAL_SERVER_ERROR(500),
+    /**
+     * 缺少参数
+     */
+    MISS_PARAMETER(123);
 
     public int code;
 
