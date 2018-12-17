@@ -24,6 +24,13 @@ import java.util.Scanner;
  * ================================================
  */
 public class CodeGenerator {
+
+    private static String AUTHOR = "XiaMuYao";
+    private static String DATABASE = "automation";
+    private static String DATABASE_USERNAME = "root";
+    private static String DATABASE_PASSWORD = "XiaMuYao1314!";
+    private static String PROJECT = "top.xiamuyao.fastspringdevelop";
+
     /**
      * <p>
      * 读取控制台内容
@@ -51,23 +58,23 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("夏沐尧");
+        gc.setAuthor(AUTHOR);
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/automation?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE+"?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("XiaMuYao1314!");
+        dsc.setUsername(DATABASE_USERNAME);
+        dsc.setPassword(DATABASE_PASSWORD);
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(scanner("模块名"));
-        pc.setParent("top.xiamuyao.fastspringdevelop");
+        pc.setParent(PROJECT);
         mpg.setPackageInfo(pc);
 
         // 自定义配置

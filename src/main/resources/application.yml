@@ -14,3 +14,7 @@ mybatis-plus:
 logging:
   level:
     top.xiamuyao.fastspringdevelop.api.mapper: debug
+
+security:
+  token:
+    secret: YOUR SECRET + 64 BIT > OVJPIDSFWE\''F]\WE=F23=-4VXCNONSFIOEIWI023         # Token 密钥
