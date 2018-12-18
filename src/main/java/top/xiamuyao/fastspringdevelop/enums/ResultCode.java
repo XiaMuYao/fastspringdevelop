@@ -1,4 +1,4 @@
-package top.xiamuyao.fastspringdevelop.util;
+package top.xiamuyao.fastspringdevelop.enums;
 
 /**
  * ================================================
@@ -29,7 +29,7 @@ public enum ResultCode {
     /**
      * token失效
      */
-    TOKEN_FALSE(233),
+    TOKEN_FALSE(1015),
     /**
      * 服务器内部错误
      */

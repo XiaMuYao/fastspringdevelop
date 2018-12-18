@@ -4,8 +4,6 @@ import top.xiamuyao.fastspringdevelop.api.entity.User;
 import top.xiamuyao.fastspringdevelop.api.mapper.UserMapper;
 import top.xiamuyao.fastspringdevelop.api.service.IUserService;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;

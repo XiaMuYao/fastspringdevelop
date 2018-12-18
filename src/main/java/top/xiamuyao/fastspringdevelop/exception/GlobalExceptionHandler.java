@@ -3,20 +3,13 @@ package top.xiamuyao.fastspringdevelop.exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
-import top.xiamuyao.fastspringdevelop.util.ResultCode;
+import top.xiamuyao.fastspringdevelop.enums.ResultCode;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 import top.xiamuyao.fastspringdevelop.util.RetResult;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * ================================================

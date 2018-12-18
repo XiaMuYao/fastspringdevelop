@@ -50,6 +50,7 @@ public class UserController {
      * @param stopTime  停止时间 13位时间戳
      * @return
      */
+    // TODO: 2018/12/18 这个日期操作弄到service去做，这么做太不软件开发了
     @PostMapping("/addnum")
     public RetResult addRegisterList(@RequestParam("num") int num,
                                      @RequestParam("startTime") String startTime,

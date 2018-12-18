@@ -1,16 +1,19 @@
 package top.xiamuyao.fastspringdevelop.exception;
 
 import lombok.Getter;
-import top.xiamuyao.fastspringdevelop.util.ResultCode;
+import top.xiamuyao.fastspringdevelop.enums.ResultCode;
 
 /**
- * 服务异常类
- *
- * @author Li Jinhui
- * @since 2018/12/6
+ * ================================================
+ * 作    者：夏沐尧  Github地址：https://github.com/XiaMuYaoDQX
+ * 版    本：1.0
+ * 创建日期： 2018/10/29
+ * 描    述：服务异常类
+ * 修订历史：
+ * ================================================
  */
 @Getter
-public class ServiceException extends RuntimeException {
+public class ServiceException extends Exception {
     private ResultCode code;
     private String message;
 

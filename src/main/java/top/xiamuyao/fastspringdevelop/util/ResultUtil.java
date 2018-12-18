@@ -1,5 +1,7 @@
 package top.xiamuyao.fastspringdevelop.util;
 
+import top.xiamuyao.fastspringdevelop.enums.ResultCode;
+
 /**
  * ================================================
  * 作    者：夏沐尧  Github地址：https://github.com/XiaMuYaoDQX

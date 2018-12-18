@@ -5,7 +5,6 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
-
 mybatis-plus:
   mapper-locations: classpath:/mapper/api/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
@@ -18,3 +17,4 @@ logging:
 security:
   token:
     secret: zheshiwodemiyaowifimima-1801hahaha         # Token 密钥
+

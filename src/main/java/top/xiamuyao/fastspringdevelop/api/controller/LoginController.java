@@ -3,6 +3,7 @@ package top.xiamuyao.fastspringdevelop.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import lombok.NonNull;
-import top.xiamuyao.fastspringdevelop.annotation.Auth;
-import top.xiamuyao.fastspringdevelop.annotation.service.TokenService;
 import top.xiamuyao.fastspringdevelop.enums.TokenType;
+import top.xiamuyao.fastspringdevelop.exception.ServiceException;
+import top.xiamuyao.fastspringdevelop.util.JwtUtil;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 import top.xiamuyao.fastspringdevelop.util.RetResult;
 
@@ -27,10 +28,8 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
  * ================================================
  */
 @RestController
-@RequestMapping("/api/login")
 public class LoginController {
-    @Autowired
-    private TokenService tokenService;
+
 
     /**
      * 获取token
@@ -39,12 +38,13 @@ public class LoginController {
      * @param password
      * @return
      */
-    @GetMapping("")
+    @GetMapping("/login")
     public RetResult getToken(@NonNull @RequestParam(value = "accountId") String accountname,
                               @NonNull @RequestParam(value = "password") String password) {
         Map<String, Object> payload = new HashMap<String, Object>();
         payload.put("accountname", 1);
-        return ResultUtil.makeOkDataRsp(tokenService.generate(TokenType.ACCESS, payload, 1));
+//        throw new ServiceException("测试异常");
+        return ResultUtil.makeOkDataRsp(JwtUtil.generateToken(accountname));
     }
 
     /**
@@ -53,28 +53,9 @@ public class LoginController {
      * @param token
      * @return
      */
-    @PostMapping("/jwt")
+    @PostMapping("/api/jwt")
     public RetResult getJwt(@RequestParam("token") String token) {
-        return ResultUtil.makeOkDataRsp(tokenService.parse(TokenType.ACCESS, token));
-        /**
-         * {
-         *     "code": 200,
-         *     "data": {
-         *         "body": {
-         *             "password": "18945709505",
-         *             "username": "xiamuyao",
-         *             "sub": "ACCESS",
-         *             "exp": 1545109206
-         *         },
-         *         "header": {
-         *             "alg": "HS256"
-         *         },
-         *         "signature": "ig_3PZvIgcbro6beIYytvvkg3U2iLnhBNLrT5S58Zjw"
-         *     },
-         *     "msg": "success"
-         * }
-         * 这里的返回信息在这里
-         */
+        return ResultUtil.makeOkDataRsp(JwtUtil.parse(token));
     }
 
     /**
@@ -83,8 +64,8 @@ public class LoginController {
      * @param accountId
      * @return
      */
-    @GetMapping("/auth")
-    public RetResult auth(@Auth int accountId) {
+    @GetMapping("/api/auth")
+    public RetResult auth(@RequestHeader(value = JwtUtil.USER_NAME) String accountId) {
         return ResultUtil.makeOkDataRsp(accountId);
         /**
          * Access-Token headers里面
