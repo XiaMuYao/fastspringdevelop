@@ -27,6 +27,7 @@ import top.xiamuyao.fastspringdevelop.exception.ServiceException;
  * 修订历史：
  * ================================================
  */
+// TODO: 2018/12/19 这里的部分常量弄去yml文件里面
 public class JwtUtil {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtil.class);
     /**

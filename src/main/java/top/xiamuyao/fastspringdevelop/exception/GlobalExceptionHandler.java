@@ -21,7 +21,6 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
  * ================================================
  */
 // TODO: 2018/12/18 需要全局处理一下异常的问题  ServiceException 去判断这个的code 组合业务代码使用
-// TODO: 2018/12/18 而且对于多个异常的写法要更改一下 全局异常-分 业务异常(自定义异常)-总
 @RestControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
@@ -52,7 +51,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ServiceException.class)
     public RetResult serviceException(ServiceException e) {
-        // TODO: 2018/12/18 这里需要进行code判断 结合业务代码
         return ResultUtil.makeRsp(ResultCode.TOKEN_FALSE, e.getMessage());
     }
 

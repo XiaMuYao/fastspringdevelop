@@ -30,7 +30,6 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
 @RestController
 public class LoginController {
 
-
     /**
      * 获取token
      *
@@ -43,7 +42,6 @@ public class LoginController {
                               @NonNull @RequestParam(value = "password") String password) {
         Map<String, Object> payload = new HashMap<String, Object>();
         payload.put("accountname", 1);
-//        throw new ServiceException("测试异常");
         return ResultUtil.makeOkDataRsp(JwtUtil.generateToken(accountname));
     }
 

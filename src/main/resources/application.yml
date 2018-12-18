@@ -14,7 +14,7 @@ logging:
   level:
     top.xiamuyao.fastspringdevelop.api.mapper: debug
 
-security:
-  token:
-    secret: zheshiwodemiyaowifimima-1801hahaha         # Token 密钥
-
+jwt:
+  secret: 123123123123123123123123112312312123123123123112312312312313123112312312312311
+  time: 3600_000_000L
+  headerStr: Authorization
