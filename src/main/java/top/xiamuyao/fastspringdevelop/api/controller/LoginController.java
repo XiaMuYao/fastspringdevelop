@@ -1,6 +1,7 @@
 package top.xiamuyao.fastspringdevelop.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import lombok.NonNull;
 import top.xiamuyao.fastspringdevelop.enums.TokenType;
@@ -30,6 +32,9 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
 @RestController
 public class LoginController {
 
+    @Autowired
+    protected StringRedisTemplate redisTemplate;
+
     /**
      * 获取token
      *
@@ -40,9 +45,19 @@ public class LoginController {
     @GetMapping("/login")
     public RetResult getToken(@NonNull @RequestParam(value = "accountId") String accountname,
                               @NonNull @RequestParam(value = "password") String password) {
-        Map<String, Object> payload = new HashMap<String, Object>();
-        payload.put("accountname", 1);
-        return ResultUtil.makeOkDataRsp(JwtUtil.generateToken(accountname));
+
+//        if (用户名和密码正确) {
+        if (redisTemplate.hasKey(accountname)) {
+            return ResultUtil.makeOkDataRsp(redisTemplate.opsForValue().get(accountname));
+        } else {
+            String s = JwtUtil.generateToken(accountname);
+            redisTemplate.opsForValue().set(accountname, s, JwtUtil.EXPIRATION_TIME, TimeUnit.MILLISECONDS);
+            return ResultUtil.makeOkDataRsp(s);
+        }
+//        } else {
+//        return ResultUtil.makeErrRsp("用户名或者密码错误");
+//        }
+
     }
 
     /**
