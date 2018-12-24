@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
 
+import top.xiamuyao.fastspringdevelop.aaaaaaaaaaaaa.Sender;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 import top.xiamuyao.fastspringdevelop.util.RetResult;
 
@@ -25,13 +26,15 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
 public class MobileController {
 
     @Autowired
-    protected StringRedisTemplate  redisTemplate;
+    protected StringRedisTemplate redisTemplate;
 
+    @Autowired
+    Sender sender;
 
     @GetMapping("/get")
     public RetResult getToken() {
 
-        String xiamuyao =  redisTemplate.opsForValue().get("xiamuyao");
+        String xiamuyao = redisTemplate.opsForValue().get("xiamuyao");
 
         return ResultUtil.makeOkDataRsp(xiamuyao);
     }
@@ -42,6 +45,14 @@ public class MobileController {
         redisTemplate.opsForValue().set("xiamuyao", accountname);
 
 
+        return ResultUtil.makeOkDataRsp("");
+    }
+
+    @GetMapping("/mqsemd")
+    public RetResult mqsemd(@RequestParam(value = "message") String message) {
+
+
+        sender.send(message);
         return ResultUtil.makeOkDataRsp("");
     }
 

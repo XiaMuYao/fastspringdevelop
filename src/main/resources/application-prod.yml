@@ -2,6 +2,8 @@ server:
   port: 8009
 
 spring:
+  application:
+    name: fastspringDemo-prod
   profiles:
     active: prod
   datasource:

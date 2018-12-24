@@ -33,7 +33,7 @@ public class JwtUtil {
     /**
      * token时间 1000 hour
      */
-    public static final long EXPIRATION_TIME = 3600_000_000L;
+    public static final long EXPIRATION_TIME = 86400000;
     /**
      * 生成的密钥
      */

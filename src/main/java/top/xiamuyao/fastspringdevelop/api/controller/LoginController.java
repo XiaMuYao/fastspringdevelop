@@ -59,7 +59,6 @@ public class LoginController {
 //        }
 
     }
-
     /**
      * 验证token 并且返回解析信息 测试用 一般没有
      *
