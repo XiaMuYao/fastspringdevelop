@@ -10,6 +10,7 @@ mybatis-plus:
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: top.xiamuyao.fastspringdevelop.api.entity
 
+
 logging:
   level:
     top.xiamuyao.fastspringdevelop.api.mapper: debug
