@@ -1,5 +1,7 @@
 package com.confluence.fast.api.controller
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
+import com.confluence.fast.api.entity.User
 import com.confluence.fast.api.service.IUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping("/api/user")
-class UserController{
+class UserController {
 
 
     @Autowired
@@ -28,4 +30,10 @@ class UserController{
         return iUserService.list()
     }
 
+
+    @GetMapping("one")
+    fun selectUser(): Any? {
+        val queryWrapper = QueryWrapper<User>().apply { this.eq("name", "夏沐尧") }
+        return iUserService.getOne(queryWrapper)
+    }
 }
