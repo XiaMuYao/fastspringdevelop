@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import top.xiamuyao.fastspringdevelop.enums.ResultCode;
 import top.xiamuyao.fastspringdevelop.util.ResultUtil;
 import top.xiamuyao.fastspringdevelop.util.RetResult;
@@ -21,7 +19,7 @@ import top.xiamuyao.fastspringdevelop.util.RetResult;
  * ================================================
  */
 // TODO: 2018/12/18 需要全局处理一下异常的问题  ServiceException 去判断这个的code 组合业务代码使用
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 

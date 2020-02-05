@@ -75,6 +75,4 @@ public class ResultUtil {
     public static <T> RetResult<T> makeRsp(ResultCode code, String msg, T data) {
         return new RetResult<T>().setCode(code).setMsg(msg).setData(data);
     }
-
-
 }

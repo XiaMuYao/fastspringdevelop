@@ -4,9 +4,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+import top.xiamuyao.fastspringdevelop.api.entity.User;
+import top.xiamuyao.fastspringdevelop.api.mapper.UserMapper;
 
-import top.xiamuyao.fastspringdevelop.aaaaaaaaaaaaa.Sender;
+import java.util.List;
 
 /**
  * ================================================
@@ -17,16 +19,23 @@ import top.xiamuyao.fastspringdevelop.aaaaaaaaaaaaa.Sender;
  * 修订历史：
  * ================================================
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class HelloApplicationTests {
-
     @Autowired
-    private Sender sender;
+    public UserMapper userMapper;
 
     @Test
-    public void hello() throws Exception {
-//        sender.send(message);
+    public void insert(){
+        User user = new User();
+        user.setName("张4丰");
+        int insert = userMapper.insert(user);
+        System.out.println("受影响行数::" + insert);
+    }
+    @Test
+    public void selectAllList(){
+        List<User> users = userMapper.selectList(null);
+        users.forEach(System.out::println);
     }
 
 }

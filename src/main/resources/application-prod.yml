@@ -24,8 +24,3 @@ spring:
     validationQuery: SELECT 1 FROM dual
     # 配置监控统计拦截的filters,去掉后，监控界面的sql无法统计
     filters: stat,wall,log4j
-  redis:
-    password:
-    database: 0
-    port: 6379
-    host: localhost

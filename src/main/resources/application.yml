@@ -13,8 +13,3 @@ mybatis-plus:
 logging:
   level:
     top.xiamuyao.fastspringdevelop.api.mapper: debug
-
-jwt:
-  secret: 123123123123123123123123112312312123123123123112312312312313123112312312312311
-  time: 3600_000_000L
-  headerStr: Authorization

@@ -26,10 +26,11 @@ import java.util.Scanner;
 public class CodeGenerator {
 
     private static String AUTHOR = "XiaMuYao";
-    private static String DATABASE = "automation";
+    private static String DATABASE = "toast";
     private static String DATABASE_USERNAME = "root";
-    private static String DATABASE_PASSWORD = "XiaMuYao1314!";
+    private static String DATABASE_PASSWORD = "LoPickHcgXmy123.";
     private static String PROJECT = "top.xiamuyao.fastspringdevelop";
+    private static String ADDRESS = "39.97.251.220:3306";
 
     /**
      * <p>
@@ -64,7 +65,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/"+DATABASE+"?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true");
+        dsc.setUrl("jdbc:mysql://" + ADDRESS + "/" + DATABASE + "?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername(DATABASE_USERNAME);
