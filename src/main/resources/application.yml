@@ -8,9 +8,8 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mapper/api/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: top.xiamuyao.fastspringdevelop.api.entity
-
+  typeAliasesPackage: com.confluence.fast.api.entity
 
 logging:
   level:
-    top.xiamuyao.fastspringdevelop.api.mapper: debug
+    com.confluence.fast.api.mapper: debug
