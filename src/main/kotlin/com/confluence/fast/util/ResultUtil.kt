@@ -1,5 +1,6 @@
 package com.confluence.fast.util
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import com.confluence.fast.enums.ResultCode
 
 /**
@@ -40,6 +41,18 @@ object ResultUtil {
     </T> */
     fun <T> makeOkDataRsp(data: T): RetResult<T?>? {
         return RetResult<T?>().setCode(ResultCode.SUCCESS).setMsg(SUCCESS).setData(data)
+    }
+
+    /**
+     * 成功返回分页数据 有数据
+     *
+     * @param page
+     * @param <T>
+     * @return
+    </T> */
+    fun <T> makeOkDataPageRsp(page: T): RetResult<T?>? {
+        val tempPage = (page as Page<T>)
+        return RetResult<T?>().setCode(ResultCode.SUCCESS).setMsg(SUCCESS).setTotal(tempPage.total).setCurrent(tempPage.current).setData(tempPage.records as T)
     }
 
     /**

@@ -15,30 +15,48 @@ class RetResult<T> {
     /**
      * 错误码
      */
-    var code = 0
+    var errorCode = 0
     /**
      * 提示信息
      */
-    var msg: String? = null
+    var errorMessage: String? = null
         private set
     /**
      * 具体内容
      */
     var data: T? = null
         private set
+    /**
+     * 总数
+     */
+    var total =0L
+    /**
+     * 当前页数
+     */
+    var current = 0L
+
+    fun setTotal(total: Long): RetResult<T> {
+        this.total = total
+        return this
+    }
+
+    fun setCurrent(current: Long): RetResult<T> {
+        this.current =current
+        return this
+    }
 
     fun setCode(retCode: ResultCode): RetResult<T> {
-        code = retCode.code
+        errorCode = retCode.code
         return this
     }
 
     fun setCode(code: Int): RetResult<T> {
-        this.code = code
+        this.errorCode = code
         return this
     }
 
     fun setMsg(msg: String?): RetResult<T> {
-        this.msg = msg
+        this.errorMessage = msg
         return this
     }
 
@@ -46,4 +64,5 @@ class RetResult<T> {
         this.data = data
         return this
     }
+
 }

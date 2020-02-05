@@ -3,6 +3,7 @@ package com.confluence.fast
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
 import com.confluence.fast.api.entity.User
 import com.confluence.fast.api.mapper.UserMapper
+import com.confluence.fast.api.service.IUserService
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +25,9 @@ class HelloApplicationTests {
     @Autowired
     lateinit var userMapper: UserMapper
 
+    @Autowired
+    private lateinit var iUserService: IUserService
+
     @Test
     fun selectAllList() {
         val wrapper = QueryWrapper<User>().apply { this.like("name", "夏") }
@@ -40,6 +44,17 @@ class HelloApplicationTests {
             val selectAll = this.selectAll()
             selectAll.forEach { println(it.toString()) }
         }
+    }
 
+    @Test
+    fun insert100User() {
+        val arrayOf = mutableListOf<User>()
+        for (i in 0..100) {
+            val user = User().apply {
+                this.name = System.currentTimeMillis().toString() + "名字"
+            }
+            arrayOf.add(user)
+        }
+        iUserService.saveBatch(arrayOf)
     }
 }

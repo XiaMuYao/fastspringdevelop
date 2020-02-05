@@ -1,8 +1,11 @@
 package com.confluence.fast.api.controller
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import com.confluence.fast.api.entity.User
 import com.confluence.fast.api.service.IUserService
+import com.confluence.fast.util.ResultUtil
+import com.confluence.fast.util.RetResult
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/user")
 class UserController {
 
-
     @Autowired
     private lateinit var iUserService: IUserService
 
@@ -30,10 +32,17 @@ class UserController {
         return iUserService.list()
     }
 
-
     @GetMapping("one")
-    fun selectUser(): Any? {
+    fun selectUser(): RetResult<User?>? {
         val queryWrapper = QueryWrapper<User>().apply { this.eq("name", "夏沐尧") }
-        return iUserService.getOne(queryWrapper)
+        val one = iUserService.getOne(queryWrapper)
+        return ResultUtil.makeOkDataRsp(one)
     }
+
+    @GetMapping("page")
+    fun selectUserPage(): RetResult<Page<User>?>? {
+        val page = iUserService.page(Page<User>(1, 20))
+        return ResultUtil.makeOkDataPageRsp(page)
+    }
+
 }
